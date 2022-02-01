@@ -1,0 +1,72 @@
+/*
+unidades de medida:
+vh: margen de 1 obre 100 (1/100)
+% : respecto al elemento padre
+px: pixeles
+cm: centímetros
+padding = espacio entre componentes/elementos
+box-sizing = alto va a ser igual al alto + espaciado + borde
+position relative: relativa la posición en la que se encuentra el objeto
+position static: no se ve afectado sin importar cualquier otro contenido
+margin: dar un espacio al rededor de los elementos
+display: como se muestra la información  flex : se va a comportar de manera flexible, abarque la mayor parte del div
+align-items: disposición en la que queremos mostrat elementos
+*/
+
+.container{
+    height: 100vh;
+    width: 100%;
+    background-image: url(../images/background.png);
+    background-size: cover; /* cover cubre todo el div o el tag de div sin distorcionar la imagen*/
+    padding-left: 5%; 
+    padding-right: 5%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.navbar {
+    width: 100%;
+    height: 15vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 160px;
+    cursor: pointer;
+}
+
+nav {
+    flex:1;
+    padding-left: 60px;
+}
+
+nav ul li {
+    display: inline-block; /* que se vean en una misma linea */
+    list-style: none;
+    margin: 0px 20px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#009999; 
+}
+
+.content {
+    margin-top:10%;
+    margin-left:10%;
+}
+
+.content h1 {
+    font-size:60px;
+    font-weight: 100;
+    margin-top: 24px;
+    margin-bottom: 15px;
+    color:#cc00cc;
+}
+
+.content p {
+    font-size:20px;
+    color:#9900ff;
+}
