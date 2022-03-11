@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                </head>
+                <body>
+                    <h1>Datos de Persona</h1>
+                    <a th:href="@{/personas}">Regresar</a>
+                    <br>
+                        <form th:object = "${persona}"
+                              th:action="@{/save}"
+                              method="post">
+                            <div class="form-group-row">
+                                <input type="hidden" name="id" th:field="*{id}"/>
+                                <label for="nombre">Nombre</label>
+                                <input type="text" th:field="*{nombre}"  placeholder= "Nombre Cliente" id="nombres" aria-describedby="emailHelp"/>
+                                <label for="apellido1">Primer Apellido</label>
+                                <input type="text" th:field="*{apellido1}"  placeholder= "Primer Apellido" id="apellido1" aria-describedby="emailHelp"/>
+                                <label for="apellido2">Segundo Apellido</label>
+                                <input type="text" th:field="*{apellido2}"  placeholder= "Segundo Apellido" id="apellido2" aria-describedby="emailHelp"/>
+                                <label for="email">Correo</label>
+                                <input type="email" th:field="*{email}"  placeholder= "email" id="email" aria-describedby="emailHelp"/>
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" th:field="*{telefono}"  placeholder= "telefono" id="telefono" aria-describedby="emailHelp"/>
+                                <label for="pais">Pais</label>
+                                <input type="text" th:field="*{pais}"  placeholder= "pais" id="pais" aria-describedby="emailHelp"/>
+                                <br>
+                                    
+                                    <button type= "submit" value="Guardar">Submit</button>
+                            </div>
+                        </form>
+                </body>
+                </html>
