@@ -4,7 +4,9 @@
  */
 package com.tienda.controller;
 
+import com.tienda.entity.Pais;
 import com.tienda.entity.Persona;
+import com.tienda.service.IPaisService;
 import com.tienda.service.IPersonaService;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,9 @@ public class PersonasController {
     @Autowired
     private IPersonaService personaService;
 
+    @Autowired
+    private IPaisService paisService;
+
     @GetMapping("/personas")
     public String index(Model model) {
         List<Persona> listaPersonas = personaService.getAllPerson();
@@ -34,22 +39,33 @@ public class PersonasController {
         model.addAttribute("personas", listaPersonas);
         return "personas";
     }
-    
+
     @GetMapping("/nuevaPersona")
-    public String nuevaPersona (Model model){
-     model.addAttribute("persona", new Persona());
-    return "modificarPersona";
+    public String nuevaPersona(Model model) {
+        List<Pais> listaPais = paisService.listCountry();
+        model.addAttribute("paises", listaPais);
+        model.addAttribute("persona", new Persona());
+        return "modificarPersona";
     }
-    
+
     @PostMapping("/save")
-    public String guardarPersona (@ModelAttribute Persona persona){
-    personaService.savePerson(persona);
-    return "redirect:/personas";
+    public String guardarPersona(@ModelAttribute Persona persona) {
+        personaService.savePerson(persona);
+        return "redirect:/personas";
     }
     
+    @GetMapping("/editPersona/{id}")
+    public String editarPersona(@PathVariable("id") Long idPersona, Model model){
+        Persona p = personaService.getPersonById(idPersona);
+        List <Pais> listaPais = paisService.listCountry();
+        model.addAttribute("persona", p);
+        model.addAttribute("paises", listaPais);
+        return "modificarPersona";
+    }
+
     @GetMapping("/delete/{id}")
     public String modificarPersona(@PathVariable("id") Long idPersona) {
-       personaService.delete(idPersona);
-       return "redirect:/personas";
+        personaService.delete(idPersona);
+        return "redirect:/personas";
     }
 }

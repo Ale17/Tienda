@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                </head>
+    <head th:replace="plantilla/template::head"></head>
                 <body>
                     <h1 th:text="${titulo}"></h1>
                     <a th:href="@{/nuevaPersona}">Nueva Persona</a>
                     <div th:if="${personas != null and !personas.empty}">
-                        <table border ="1">
+                        <table border ="1" class="table table-dark table-striped">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -18,7 +14,9 @@
                                     <th>Segundo Apellido</th>
                                     <th>Correo</th>
                                     <th>Telefono</th>
+                                    <th>Pais</th>
                                     <th>Modificar</th>
+                                    <th>Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,6 +27,8 @@
                                     <td th:text="${user.getApellido2}"></td>
                                     <td th:text="${user.getEmail}"></td>
                                     <td th:text="${user.getTelefono}"></td>
+                                    <td th:text="${user.getPais.getPais}"></td>
+                                    <td><a th:href="@{/editPersona/} + ${user.getId}">Edit</a></td>
                                     <td><a th:href="@{/delete/} + ${user.getId}">Delete</a></td>
                                 </tr>
 
